@@ -1,0 +1,301 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+.hero{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+}
+.logo{
+    font-size: 60px;
+    font-weight: 500;
+}
+.menu{
+    display: block;
+}
+.menu ul li{
+    float: left;
+    list-style-type: none;
+    padding: 1em;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+.username{
+    background-color: orange;
+    color: white;
+}
+.username span{
+    padding: 0.5em;
+}
+.posts{
+    overflow-y: auto;
+}
+.post{
+    padding-left: 1em;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.c-post{
+    width: 100vw;
+    border-bottom: 1px solid grey;
+}
+.c-post:hover{
+    background-color: gainsboro;
+}
+.post-pic{
+    width: 20vw;
+    height:  20vw;
+}
+.post-text{
+    width: 80vw;
+}
+.post-text > *{
+    padding: 1em;
+}
+img{
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+}
+.post-img{
+    width: 30vw;
+    height:  30vw;
+    padding: 0.5em;
+}
+.post-img img{
+    width: 30vw;
+    height: 30vw;
+    border-radius: 0;
+    
+}
+.pics{
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+}
+.search-user{
+    display: none;
+}
+.name-div{
+    padding: 1em;
+    border-bottom:1px solid grey ;
+}
+.poll{
+    border-bottom: 2px solid navy;
+    border-left: 1px solid navy;
+    border-radius: 1em;
+}
+.nominee{
+    background-color: navy;
+}
+.nominee div a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+.nominee:hover{
+    background-color: rgb(31, 31, 119);
+}
+.nominee > *{
+    padding: 1em;
+    color: white;
+}
+.option{
+    background-color: navy;
+    width: 100vw;
+    color: white;
+    font-size: 1.3em;
+}
+.vertical-menu{
+    border: 1px solid navy;
+    display: flex;
+    flex-direction: row;
+}
+.ver-menu{
+    background-color: navy;
+    width: 30%;
+    height: 100vh;
+}
+.ver-menu nav{
+    list-style-type: none;
+}
+.ver-menu nav li{
+    width: 100%;
+    border-bottom: 1px solid white;
+    list-style-type: none;
+}
+.ver-menu nav li span{
+    text-decoration: none;
+    color: white;
+    font-size: 1.3em;
+    padding: 0.5em;
+}
+.ver-menu nav li:hover{
+    background-color: rgb(12, 12, 128);
+}
+.ver-stuff{
+    width: 70%;
+}
+.hidden{
+    display: none;
+}
+.button{
+    background-color: navy;
+    color: white;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 0.5em;
+}
+.form{
+    border: 1px solid navy;
+    border-radius: 1em;
+    text-align: center;
+    align-items: center;
+}
+input[type=submit]{
+    color: white;
+    background-color: navy;
+    border: 1px solid navy;
+    border-radius: 1em;
+    padding: 0.5em;
+}
+input[type=file]{
+    color: white;
+    background-color: navy;
+    border: 1px solid navy;
+    border-radius: 1em;
+    padding: 0.5em;
+}
+button{
+    color: white;
+    background-color: navy;
+    border: 1px solid navy;
+    padding: 0.5em;
+}
+.button{
+    color: white;
+    background-color: navy;
+    border: 1px solid navy;
+    padding: 0.5em;
+}
+input[type=submit]{
+    color: white;
+    background-color: navy;
+    border: 1px solid navy;
+    padding: 0.5em;
+}
+.h-menu{
+    display: none;
+}
+.centered-form{
+    text-align: center;
+}
+.ver-stuff{
+    width: 70%;
+}
+.post-text-mobile{
+    display: none;
+}
+@media only screen and (max-width:768px){
+    html,body{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    textarea{
+        width: 80vw;
+    }
+    .hero{
+        display: flex;
+        flex-direction: column;
+    }
+    .hero-pic{
+        height: 30vh;
+    }
+    .menu{
+        font-size: 0.7em;
+    }
+    .menu ul li{
+        float: left;
+        list-style-type: none;
+        padding: 4px;
+    }
+    .menu ul li a{
+        text-decoration: underline;
+        font-weight: 600;
+    }
+    .logo{
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .post{
+        padding-left: 1em;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        border-bottom: 1px solid navy;
+        border-right: 1px solid navy;
+        border-radius: 1em;
+    }
+    .hidden{
+        display: none;
+    }
+    .post-pic{
+        width: 30vw;
+        height: 30vw;
+    }
+    .post-text{
+        display: none;
+    }
+    .ver-stuff .post-text{
+        display: block;
+    }
+    .post-text-mobile{
+        display: block;
+        width: 70vw;
+        padding: 1em;
+    }
+    .vertical-menu{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .ver-menu{
+        display: none;
+    }
+    .ver-stuff{
+        width: 100vw;
+        overflow: hidden;
+    }
+    .h-menu{
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        background-color: orange;
+        padding: 1em;
+    }
+    .h-menu span{
+        display: block;
+        color: white;
+        font-size: 12px;
+        padding: 4px;
+    }
+    .h-menu span:hover{
+        color: navy;
+    }
+    .mobile-post .myacc-pic{
+        width: 40vw;
+        height: 40vw;
+    }
+    .mobile-post .post-text{
+        width: 60vw;
+    }
+    .c-post .post-text{
+        display: block;
+    }
+}

@@ -1,0 +1,23 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+    <div>
+        {% for post in posts %}
+            <div class="post" onclick="location.href='/details/{{post.id}}'">
+                <div class="post-pic">
+                    {% load static %}
+                    <img src="{{MEDIA_URL}}{{post.feature_pic.url}}" alt="">
+                </div>
+                <div class="post-text">
+                    <h3>{{post.title}}</h3>
+                    <p>
+                        <span style="font-size: 1.1em;">{{post.body|truncatewords:20}}</span> <br><br>
+                        <span>{{post.views}} Views {{post.date_posted}} Editor : {{post.author}}</span> <br>
+                    </p>
+                    <p>
+                        <a href="/community/addpicsfile/{{post.id}}"  class="button">Add pics</a>
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

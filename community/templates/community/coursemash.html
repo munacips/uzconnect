@@ -1,0 +1,39 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+    <div class="hero">
+        <div>
+            <nav class="menu">
+                <ul>
+                    <li>Search by :</li>
+                    <li style="border-bottom:1px solid navy; background-color: rgb(178, 178, 187);"><a href="/community/studentsearch">Student Name</a></li>
+                    <li style="border-bottom:1px solid navy; background-color: rgb(100, 100, 122);"><a href="/community/coursemash">Program</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <hr color="navy">
+    <div class="search-prog" id="sp">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Show users" class="">
+        </form>
+    </div>
+    <div>
+        {% for ac in accs %}
+            {% if ac in acc.following.all %}
+            <div class="name-div" onclick="location.href='/community/userprofile/{{user.id}}'">
+                <span><b>{{ac}}</b></span><br>
+                <span>{{ac.user.first_name}} {{ac.user.last_name}}</span>
+                <a href="/community/unfollow/{{ac.user.id}}" class="button">Following</a>
+            </div>
+            {% else %}
+            <div class="name-div" onclick="location.href='/community/userprofile/{{user.id}}'">
+                <span><b>{{ac}}</b></span><br>
+                <span>{{ac.user.first_name}} {{ac.user.last_name}}</span>
+                <a href="/community/follow/{{ac.user.id}}" class="button">Follow</a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

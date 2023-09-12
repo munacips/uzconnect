@@ -1,0 +1,27 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+<br><br>
+    <div style="padding: 1em;" >
+        <div style="font-size: 20px; font-weight: 600;">
+            {{post.quote}}
+        </div><br>
+        <div><b>{{post.quoter}}</b> {{post.time}} {{post.quotelike_set.count}} Likes</div>
+    </div>
+    <hr>
+    <div style="padding: 1em;">
+        <h3>Comments</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Post">
+        </form>
+        <br><br>
+        {% for c in comments %}
+            <div>
+                {{c.comment}}<br>
+                <b>{{c.commenter}}</b> {{c.time}}
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

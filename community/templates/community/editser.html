@@ -1,0 +1,23 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+    <div>
+        <div>
+            <h2>{{ser}}</h2>
+        </div>
+        <div>
+            *ONLY ENTER THE FIELDS YOU WISH TO CHANGE
+            {% if text %}
+                <div style="background-color: green;">
+                    *{{text}}
+                </div>
+            {% endif %}
+        </div>
+        <div>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Change" class="">
+            </form>
+        </div>
+    </div>
+{% endblock %}

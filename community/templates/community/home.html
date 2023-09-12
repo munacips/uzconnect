@@ -1,0 +1,36 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+    <div class="hero">
+        <div>
+            <nav class="menu">
+                <ul>
+                    <li><b>{{acc.get_program_display}}</b></li>
+                    <li style="border-bottom:1px solid navy; background-color: rgb(100, 100, 122);"><a href="/community/">Home</a></li>
+                    <li style="border-bottom:1px solid navy; background-color: rgb(178, 178, 187);"><a href="/community/coursemash">CourseMash</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <hr color="navy">
+    <div>
+        <form action="" method="POST" class="centered-form">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Quote" class="button">
+        </form>
+    </div>
+    <section class="posts">
+        {% for post in posts %}
+            <div class="c-post" onclick="location.href='details/{{post.id}}'">
+                <div class="post-text">
+                    <p>
+                        <span><b>{{post.quoter}}</b></span><br>
+                        <span style="font-size: 1.1em;">{{post.quote}}</span> <br><br>
+                        <span style="font-size: smaller; font-weight: 600;">{{post.time}}</span> <br><br>
+                        <span>{{ post.quotelike_set.count }} Likes <a href="like/{{post.id}}" class="button">Like</a></a></span><br>
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}

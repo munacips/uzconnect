@@ -1,0 +1,108 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+    <div>
+        <style>
+            .avatar{
+                border-radius: 50%;
+                width: 25vw;
+                height: 25vw;
+            }
+        </style>
+        <h2>{{user.account}}</h2>
+        <div>{{user.first_name}} {{user.last_name}}</div><br>
+        <div>{{user.account.count_followers}} Followers {{user.account.count_following}} Following</div><br>
+        <div>
+            {% if user in my_acc.following.all %}
+                <a href="" class="button">Following</a>
+            {% else %}
+                <a href="" class="button">Follow</a>
+            {% endif %}
+        </div>
+        <br>
+        <hr>
+        <div style="text-align: center; background-image: linear-gradient(white,grey);">
+            <img class="avatar" src="{{MEDIA_URL}}{{user.account.display_picture.url}}" alt="">
+        </div>
+    </div>
+    <div class="vertical-menu">
+        <div class="ver-menu">
+            <nav>
+                <li><span onclick="show_Articles()">Articles</span></li>
+                <li><span onclick="show_Quotes()">Quotes</span></li>
+                <li><span onclick="show_Goods()">Goods</span></li>
+                <li><span onclick="show_Sers()">Services</span></li>
+            </nav>
+        </div>
+        <div class="ver-stuff">
+            <div class="post hidden" id="hidden-ar">
+                {% for post in posts %}
+                <br>
+                    <div class="post" onclick="location.href='/details/{{post.id}}'">
+                        <div class="post-pic">
+                            {% load static %}
+                            <img src="{{MEDIA_URL}}{{post.feature_pic.url}}" alt="">
+                        </div>
+                        <div class="post-text">
+                            <h3>{{post.title}}</h3>
+                            <p style="font-weight: 400;">
+                                <span style="font-size: 1.1em;">{{post.body|truncatewords:20}}</span> <br><br>
+                                <span style="font-weight: 600;" >{{post.views}} Views</span><br>
+                                <span>{{post.date_posted}}</span><br>
+                                <span style="font-weight: 600;">Editor : {{post.author}}</span><br>
+                            </p>
+                        </div>
+                    </div> <br>
+                {% endfor %}
+            </div>
+            <div class="hidden-q" id="hidden-qo">
+                {% for post in quotes %}
+                <div class="post-text" style="width: 100%;">
+                    <p>
+                        <span><b>{{post.quoter}}</b></span><br>
+                        <span style="font-size: 1.1em;">{{post.quote}}</span> <br><br>
+                        <span style="font-size: smaller; font-weight: 600;">{{post.time}}</span> <br>
+                    </p>
+                    <hr>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="posts hidden" id="hidden-serv">
+                {% for ser in sers %}
+                    <div class="post" onclick="location.href='/biz/gooddetails/{{ser.id}}'">
+                        <div class="post-pic myacc-pic">
+                            {% load static %}
+                            <img src="{{MEDIA_URL}}{{ser.feature_pic.url}}" alt="">
+                        </div>
+                        <div class="post-text">
+                            <h3>{{ser.service}}</h3>
+                            <p>
+                                <span>${{ser.estimate_prize}}USD</span><br>
+                                <span>Provided by : {{ser.provider}}</span><br>
+                                <span>+263{{ser.phone_or_whatsapp_number}}</span> <br><br>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="posts hidden" id="hidden-g">
+                {% for ser in goods %}
+                <div class="post" onclick="location.href='/biz/gooddetails/{{ser.id}}'">
+                    <div class="post-pic myacc-pic" >
+                        {% load static %}
+                        <img src="{{MEDIA_URL}}{{ser.feature_pic.url}}" alt="">
+                    </div>
+                    <div class="post-text">
+                        <h3>{{ser.good}}</h3>
+                        <p>
+                            <span>${{ser.estimate_prize}}USD</span><br>
+                            <span>Provided by : {{ser.provider}}</span><br>
+                            <span>+263{{ser.phone_or_whatsapp_number}}</span> <br><br>
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

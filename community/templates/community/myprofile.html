@@ -1,0 +1,19 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+    <div>
+        <style>
+            .avatar{
+                border-radius: 50%;
+                width: 25vw;
+                height: 25vw;
+            }
+        </style>
+        <h2>{{acc}}</h2>
+        <div>{{user.first_name}} {{user.last_name}}</div><br>
+        <div>{{acc.count_followers}} Followers {{acc.count_following}} Following</div><br>
+        <hr>
+        <div style="text-align: center; background-image: linear-gradient(white,grey);">
+            <img class="avatar" src="{{MEDIA_URL}}{{acc.display_picture.url}}" alt="">
+        </div>
+    </div>
+{% endblock %}

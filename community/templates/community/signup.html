@@ -1,0 +1,13 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+<br>
+    <div>
+        <br>
+        <form action="" method="POST" enctype="multipart/form-data" class="form">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Signup" class="">
+        </form>
+        <br><br>
+    </div>
+{% endblock %}

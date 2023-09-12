@@ -1,0 +1,85 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+<br>
+    <div class="vertical-menu">
+        <div class="h-menu">
+            <span href="" onclick="showQuotes()">Quotes</span>
+            <span href="" onclick="showGoods()">Goods</span>
+            <span href="" onclick="showSers()">services</span>
+            <span onclick="location.href='/community/myprofile/'">My Profile</span>
+            {% if acc.editor == True %}
+                <span onclick="location.href='/community/add/'">Add New...</span>
+            {% endif %}
+        </div>
+        <div class="ver-menu">
+            <nav>
+                <li><span onclick="showQuotes()">Quotes</span></li>
+                <li><span onclick="showGoods()">Goods</span></li>
+                <li><span onclick="showSers()">Services</span></li>
+                <li><span onclick="location.href='/community/myprofile/'">My Profile</span></li>
+                {% if acc.editor == True %}
+                    <li><span><a href="/community/add/" style="color: white;">Add Articles and Images</a></span></li>
+                {% endif %}
+            </nav>
+        </div>
+        <div class="ver-stuff">
+            <div class="hidden-q" id="hidden-q">
+                {% for post in quotes %}
+                <div class="post-text" style="width: 100%;">
+                    <p>
+                        <span><b>{{post.quoter}}</b></span><br>
+                        <span style="font-size: 1.1em;">{{post.quote}}</span> <br><br>
+                        <span style="font-size: smaller; font-weight: 600;">{{post.time}}</span> <br><br>
+                        <span><a href="/community/deletequote/{{post.id}}" class="button">Delete Quote</a></span><br>
+                    </p>
+                    <hr>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="posts hidden" id="hidden-sers">
+                {% for ser in sers %}
+                    <div class="post mobile-post" onclick="location.href='/biz/details/{{ser.id}}'">
+                        <!--
+                        <div class="post-pic myacc-pic">
+                            {% load static %}
+                            <img src="{{MEDIA_URL}}{{ser.feature_pic.url}}" alt="">
+                        </div>
+                        -->
+                        <div class="post-text">
+                            <h3>{{ser.service}}</h3>
+                            <p>
+                                <span>${{ser.estimate_prize}}USD</span><br>
+                                <span>Provided by : {{ser.provider}}</span><br>
+                                <span>+263{{ser.phone_or_whatsapp_number}}</span> <br><br>
+                                <span><a href="/community/deleteser/{{ser.id}}" class="button">Delete Service</a></span><br><br>
+                                <span><a href="/community/editser/{{ser.id}}" class="button">Edit</a></span><br><br>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="posts hidden" id="hidden-goods">
+                {% for ser in goods %}
+                <div class="post mobile-post" onclick="location.href='/biz/gooddetails/{{ser.id}}'">
+                    <!--
+                    <div class="post-pic myacc-pic" >
+                        {% load static %}
+                        <img src="{{MEDIA_URL}}{{ser.feature_pic.url}}" alt="">
+                    </div>
+                    -->
+                    <div class="post-text">
+                        <h3>{{ser.good}}</h3>
+                        <p>
+                            <span>${{ser.estimate_prize}}USD</span><br>
+                            <span>Provided by : {{ser.provider}}</span><br>
+                            <span>+263{{ser.phone_or_whatsapp_number}}</span> <br><br>
+                            <span><a href="/community/deletegood/{{ser.id}}" class="button">Delete Product</a></span><br><br>
+                            <span><a href="/community/editgood/{{ser.id}}" class="button">Edit</a></span><br><br>
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+    <div style="padding: 1em;">
+        <form action="" method="POST" enctype="multipart/form-data">
+            *phone number e.g. 714125136
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Post">
+        </form>
+    </div>
+{% endblock %}

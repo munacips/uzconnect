@@ -1,0 +1,14 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+<br>
+    <h1>Confirm Your Email.</h1>
+    <div>
+        <br>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Confirm" class="">
+            <br><br>
+        </form>
+    </div>
+{% endblock %}

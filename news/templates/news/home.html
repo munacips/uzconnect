@@ -1,0 +1,35 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+    <section class="hero-pic">
+        
+    </section>
+    <h1 style="padding: 1em;">Articles</h1>
+    <section class="posts">
+        {% for post in posts %}
+            <div class="post" onclick="location.href='/details/{{post.id}}'">
+                <div class="post-pic">
+                    {% load static %}
+                    <img src="{{MEDIA_URL}}{{post.feature_pic.url}}" alt="">
+                    <br>
+                </div>
+                <div class="post-text">
+                    <h3>{{post.title}}</h3>
+                    <p style="font-weight: 400;">
+                        <span style="font-size: 1.1em;">{{post.body|truncatewords:20}}</span> <br><br>
+                        <span style="font-weight: 600;" >{{post.views}} Views</span><br>
+                        <span>{{post.date_posted}}</span><br>
+                        <span style="font-weight: 600;">Editor : {{post.author}}</span><br>
+                    </p>
+                </div>
+                <div class="post-text-mobile">
+                    <span style="font-weight: 600; ">{{post.title}}</span><br>
+                    <div style="font-weight: 400;">
+                        <span style="font-size: 1.1em;">{{post.body|truncatewords:7}}</span> <br>
+                        <span>{{post.date_posted}}</span><br>
+                        <span style="font-weight: 600;">{{post.author}} {{post.views}} Views</span><br>
+                    </div><br>
+                </div>
+            </div> <br>
+        {% endfor %}
+    </section>
+{% endblock %}

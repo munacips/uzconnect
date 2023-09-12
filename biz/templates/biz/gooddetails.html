@@ -1,0 +1,27 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+    <hr style="color: navy;">
+    <h1 style="padding: 1em;">{{service}}</h1>
+    <section class="posts">
+        <div class="pics">
+            {% for pic in pics %}
+            <div class="post-img" onclick="location.href='{{MEDIA_URL}}{{pic.picture.url}}'">
+                <img src="{{MEDIA_URL}}{{pic.picture.url}}" alt="">
+            </div>
+            {% endfor %}
+        </div>
+        <div>
+            <div style="background-color: navy;">
+                <p>
+                    <ul style="padding: 1em; color: white;">
+                        <li>estimate price ${{service.estimate_prize}}</li>
+                        <li onclick="location.href='https://wa.me/263{{service.phone_or_whatsapp_number}}?text=I\'m%20interested%20in%20your%20service%20{{service}}%20from%20uzconnect'">Contact : +263{{service.phone_or_whatsapp_number}}</li>
+                    </ul>
+                </p>
+            </div>
+            <div style="padding: 1em;">
+                {{service.description}}
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+<br>
+    <div>
+        {% if polls != '' %}
+            {% for  poll in polls %}
+                <div class="poll" onclick="location.href='/votes/polldetails/{{poll.id}}'">
+                    <div style="padding: 1em;">
+                        <h3>{{poll.title}}</h3>
+                        <span>{{poll.vote_set.count}} Votes || Ends on {{poll.end_date}}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h2>No polls yet.</h2>
+        {% endif %}
+    </div>
+{% endblock %}

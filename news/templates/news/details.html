@@ -1,0 +1,38 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+    <hr style="color: navy;">
+    <h1 style="padding: 1em;">{{post.title}}</h1>
+    <section class="posts">
+        <div class="pics">
+            {% for pic in pics %}
+            <div class="post-img" onclick="location.href='{{MEDIA_URL}}{{pic.image.url}}'">
+                <img src="{{MEDIA_URL}}{{pic.image.url}}" alt="">
+            </div>
+            {% endfor %}
+        </div>
+        <div>
+            <div style="padding: 1em;">
+                {{post.body}}
+            </div>
+        </div>
+        <div style="padding: 1em;">
+            <h3>Comments</h3>
+            <div>
+                <form action="" method="POST" style="width: 80vw;">
+                    {% csrf_token %}
+                    {{form}}
+                </form>
+            </div>
+            <br><br>
+            {% for c in comments%}
+            <div>
+                <span>{{c.comment}}</span><br>
+                <b>
+                    <span style="font-size: smaller;">{{c.author}} {{c.date_posted}}</span>
+                </b>
+                <hr style="color: navy;">
+            </div>
+            {% endfor%}
+        </div>
+    </section>
+{% endblock %}

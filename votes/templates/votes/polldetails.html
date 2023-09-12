@@ -1,0 +1,17 @@
+{% extends 'news/layout.html' %}
+{% block content %}
+    <div>
+        <h1 style="color: navy;">{{poll}}</h1>
+        {% if msg %}
+            <h2>{{msg}}</h2>
+        {% endif %}
+        <div>
+            {% for nominee in nominees %}
+                <div class="nominee">
+                    <div onclick="location.href='/votes/vote/{{nominee.id}}'"><a href="/votes/vote/{{nominee.id}}">{{nominee.entry}} {{nominee.vote_set.count}} Votes</a></div>
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
